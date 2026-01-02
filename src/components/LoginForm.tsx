@@ -97,106 +97,108 @@ export default function LoginForm() {
       </div>
 
       {/* login card */}
-      <div className="relative w-full max-w-[380px] bg-[#151722]/80 backdrop-blur-xl px-8 py-8 rounded-[20px] border border-[#02730C]/30 shadow-2xl flex flex-col items-center z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d3a20]/70 via-[#0a1f18]/50 to-[#0a1520]/30 pointer-events-none"></div>
+      <div className="relative w-full max-w-[380px] rounded-[20px] p-[1px] bg-gradient-to-b from-[#B1FFAA] to-[#1E1E1E] shadow-2xl z-10">
+        <div className="relative w-full h-full bg-[#0a1015] px-8 py-10 rounded-[20px] flex flex-col items-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0d3a20]/70 via-[#0a1f18]/40 to-transparent pointer-events-none"></div>
 
-        <div className="relative z-10 w-full flex flex-col items-center">
-          <div className="mb-2 flex flex-col items-center">
-            <Image
-              src="/assets/codelynx_logo.png"
-              alt="CodeLynx Logo"
-              width={140}
-              height={140}
-              className="mb-1 object-contain"
-            />
-          </div>
-
-          <h1 className="text-[25px] font-semibold text-[#40FD51] mb-1 text-center">
-            Welcome Back!
-          </h1>
-          <p className="text-[#FFFFFF] text-[13px] mb-5">Sign in to continue</p>
-
-          <form className="w-full space-y-4" onSubmit={handleSubmit}>
-            {message && (
-              <div
-                className={`text-center px-4 py-2 rounded-lg text-sm ${
-                  message === 'Login successful'
-                    ? 'text-[#40FD51] bg-[#40FD51]/10 border border-[#40FD51]/20'
-                    : 'text-red-400 bg-red-400/10 border border-red-400/20'
-                }`}
-              >
-                {message}
-              </div>
-            )}
-
-            <div className="relative group">
-              <label
-                htmlFor="email"
-                className="block mb-2 text-[11px] text-[#40FD51] transition-all font-normal"
-              >
-                Your Email Address
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                value={form.email}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl bg-[#000000]/20 text-[#FFFFFF] border border-[#FFFFFF]/30 focus:outline-none focus:border-[#40FD51] transition-all duration-300 placeholder:text-transparent"
-                placeholder=" "
+          <div className="relative z-10 w-full flex flex-col items-center">
+            <div className="mb-4 flex flex-col items-center">
+              <Image
+                src="/assets/codelynx_logo.png"
+                alt="CodeLynx Logo"
+                width={120}
+                height={120}
+                className="object-contain"
               />
             </div>
 
-            <div className="relative group">
-              <label
-                htmlFor="password"
-                className="block mb-2 text-[11px] text-[#40FD51] transition-all font-normal"
-              >
-                Enter Your Password
-              </label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                value={form.password}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl bg-[#000000]/20 text-[#FFFFFF] border border-[#FFFFFF]/30 focus:outline-none focus:border-[#40FD51] transition-all duration-300 placeholder:text-transparent"
-                placeholder=" "
-              />
-              <div className="flex justify-end mt-1.5">
-                <Link
-                  href="/forgot-password"
-                  className="text-[11px] text-[#7AB181] hover:text-[#40FD51] transition-colors underline underline-offset-2"
+            <h1 className="text-[22px] font-semibold text-[#40FD51] mb-2 text-center">
+              Welcome Back!
+            </h1>
+            <p className="text-[#FFFFFF] text-[13px] mb-6">
+              Sign in to continue
+            </p>
+
+            <form className="w-full space-y-4" onSubmit={handleSubmit}>
+              {message && (
+                <div
+                  className={`text-center px-4 py-2 rounded-lg text-sm ${
+                    message === 'Login successful'
+                      ? 'text-[#40FD51] bg-[#40FD51]/10 border border-[#40FD51]/20'
+                      : 'text-red-400 bg-red-400/10 border border-red-400/20'
+                  }`}
                 >
-                  Forgot your password?
-                </Link>
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full py-2.5 mt-3 rounded-xl bg-[#FFFFFF] text-[#000000] hover:bg-[#FFFFFF]/90 transition-all font-semibold text-[16px] flex justify-center items-center shadow-lg active:scale-[0.98]"
-            >
-              {loading ? (
-                <div className="flex items-center space-x-2">
-                  <div className="animate-spin h-5 w-5 border-2 border-black border-t-transparent rounded-full"></div>
-                  <span>Sign In...</span>
+                  {message}
                 </div>
-              ) : (
-                'Sign In'
               )}
-            </button>
-          </form>
 
-          <div className="mt-4 text-[13px] text-[#7AB181]">
-            Don&apos;t have an account ?{' '}
-            <Link
-              href="/register"
-              className="text-[#40FD51] font-semibold hover:underline underline-offset-4"
-            >
-              Signup
-            </Link>
+              <div className="relative">
+                <fieldset className="w-full border border-[#FFFFFF] rounded-xl focus-within:border-[#40FD51] transition-all duration-300">
+                  <legend className="ml-3 px-1 text-[11px] text-[#40FD51] font-normal">
+                    Your Email Address
+                  </legend>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 rounded-lg bg-transparent text-[#FFFFFF] border-0 focus:outline-none placeholder:text-transparent"
+                    placeholder=" "
+                  />
+                </fieldset>
+              </div>
+
+              <div className="relative">
+                <fieldset className="w-full border border-[#FFFFFF] rounded-xl focus-within:border-[#40FD51] transition-all duration-300">
+                  <legend className="ml-3 px-1 text-[11px] text-[#40FD51] font-normal">
+                    Enter Your Password
+                  </legend>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    value={form.password}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 rounded-lg bg-transparent text-[#FFFFFF] border-0 focus:outline-none placeholder:text-transparent"
+                    placeholder=" "
+                  />
+                </fieldset>
+                <div className="flex justify-end mt-1.5">
+                  <Link
+                    href="/forgot-password"
+                    className="text-[11px] text-[#7AB181] hover:text-[#40FD51] transition-colors underline underline-offset-2"
+                  >
+                    Forgot your password?
+                  </Link>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full py-2.5 mt-5 rounded-lg bg-[#FFFFFF] text-[#000000] hover:bg-[#FFFFFF]/90 transition-all font-semibold text-[16px] flex justify-center items-center shadow-lg active:scale-[0.98]"
+              >
+                {loading ? (
+                  <div className="flex items-center space-x-2">
+                    <div className="animate-spin h-5 w-5 border-2 border-black border-t-transparent rounded-full"></div>
+                    <span>Sign In...</span>
+                  </div>
+                ) : (
+                  'Sign In'
+                )}
+              </button>
+            </form>
+
+            <div className="mt-5 text-[13px] text-[#FFFFFF]">
+              Don&apos;t have an account ?{' '}
+              <Link
+                href="/register"
+                className="text-[#40FD51] font-semibold hover:underline underline-offset-4"
+              >
+                Signup
+              </Link>
+            </div>
           </div>
         </div>
       </div>
